@@ -7,4 +7,3 @@ my_date = "2024-03-11T02:26:18.671407"
 print(mask_account_card(account_number))
 
 print(get_date(my_date))
-

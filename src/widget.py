@@ -1,4 +1,4 @@
-from src.masks import get_mask_card_number, get_mask_account
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card: str) -> str:
@@ -12,7 +12,8 @@ def mask_account_card(card: str) -> str:
     elif len(parts[-1]) == 20 and parts[-1].isdigit():
         return f"{" ".join(parts[:-1])} {get_mask_account(parts[-1])}"
     else:
-        return  "Некорректные данные"
+        return "Некорректные данные"
+
 
 def get_date(date: str) -> str:
     """
@@ -22,8 +23,3 @@ def get_date(date: str) -> str:
     date_new = date.split("T")
     new = date_new[0].split("-")
     return f"{'.'.join(new[::-1])}"
-
-
-
-
-
