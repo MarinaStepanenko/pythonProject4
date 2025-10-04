@@ -12,9 +12,9 @@
 1.  [Цель проекта](#-цель-проекта)
 2.  [Ключевые функции](#-ключевые-функции)
 3.  [Тестирование](#-тестирование)
-4. [Установка и использование](#-установка-и-использование)
-5. [Зависимости](#-зависимости)
-6. [Лицензия](#-лицензия)
+4.  [Установка и использование](#-установка-и-использование)
+5.  [Зависимости](#-зависимости)
+6.  [Лицензия](#-лицензия)
 
 ---
 
@@ -26,37 +26,59 @@
 
 ## ✨ Ключевые функции
 
-Модуль `processing` включает две основные функции:
-
+### Модуль `processing`
 *   **`filter_by_state`**: Фильтрует список операций по статусу (например, показывать только выполненные операции).
 *   **`sort_by_date`**: Сортирует список операций по дате в порядке убывания или возрастания.
 
----
-## Тестирование 
+### Модуль `generators`
+*   **`filter_by_currency(transactions, currency)`**: Возвращает итератор, который выдает транзакции с заданной валютой (например, "USD").
+*   **`transaction_descriptions(transactions)`**: Генератор, который возвращает описание каждой операции по очереди.
+*   **`card_number_generator(start, end)`**: Генерирует номера банковских карт в формате `XXXX XXXX XXXX XXXX` в заданном диапазоне.
 
-Запуск тестов:
+**Примеры использования:**
+```python
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
-*   **`pytest`**
+# Фильтрация по валюте
+usd_transactions = filter_by_currency(transactions, "USD")
+for _ in range(2):
+    print(next(usd_transactions))
 
-Запуск тестов с покрытием:
+# Получение описаний операций
+descriptions = transaction_descriptions(transactions)
+for _ in range(3):
+    print(next(descriptions))
 
-*   **`pytest --cov`**
+# Генерация номеров карт
+for card_number in card_number_generator(1, 5):
+    print(card_number)
+```
+## 🧪 Тестирование
+**Запуск тестов**:
 
+bash
+pytest
+
+### Запуск тестов с покрытием:
+```
+bash
+pytest --cov
+```
 
 ## ⚙️ Установка и использование
 
-1.  Склонируйте или скачайте проект и поместите директорию `src` в путь к вашему проекту.
+Склонируйте или скачайте проект и поместите директорию src в путь к вашему проекту.
 
-2.  Импортируйте функции из модуля `processing` в ваш скрипт:
-
-    ```python
-    from src.processing import filter_by_state, sort_by_date
-    ```
-
+Импортируйте функции из модулей в ваш скрипт:
+```
+python
+from src.processing import filter_by_state, sort_by_date
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+```
 ## 📦 Зависимости
 Проект написан на чистом Python и не требует внешних зависимостей, кроме стандартной библиотеки.
 
 Python 3.7+
 
 ## 📄 Лицензия
-Этот проект распространяется под лицензией MIT. Подробнее см. в файле LICENSE (если он есть).
+Этот проект распространяется под лицензией MIT. Подробнее см. в файле LICENSE.
