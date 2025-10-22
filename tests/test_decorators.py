@@ -15,7 +15,7 @@ def func_div_2(a: float, b: float) -> float:
 
 def test_log_file_error() -> None:
     func_div_2(4, 0)
-    assert "func_div_3 error: ZeroDivisionError. Inputs: (4, 0), {}\n" in open("logs/log.txt", encoding="utf-8")
+    assert "func_div_2 error: ZeroDivisionError. Inputs: (4, 0), {}\n" in open("logs/log.txt", encoding="utf-8")
 
 
 def test_log_file() -> None:
