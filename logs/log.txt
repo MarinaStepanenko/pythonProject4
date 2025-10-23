@@ -1,0 +1,4 @@
+func_div_2 error: ZeroDivisionError. Inputs: (4, 0), {}
+func_div_2 ок
+func_div_2 error: ZeroDivisionError. Inputs: (4, 0), {}
+func_div_2 ок

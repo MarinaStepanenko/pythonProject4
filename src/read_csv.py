@@ -8,8 +8,9 @@ def find_file_decorator(func: Callable) -> Callable:
     """
     Декоратор для автоматического поиска файлов перед выполнением функции
     """
+
     @functools.wraps(func)
-    def wrapper(filename: str, *args, **kwargs) -> Any:
+    def wrapper(filename: str, *args: Any, **kwargs: Any) -> Any:
         project_root = Path(__file__).parent.parent
         for file_path in project_root.rglob(filename):
             if file_path.is_file():
@@ -17,6 +18,7 @@ def find_file_decorator(func: Callable) -> Callable:
                 return func(file_path, *args, **kwargs)
         print(f" Файл '{filename}' не найден в проекте")
         return None
+
     return wrapper
 
 
@@ -27,7 +29,7 @@ def read_csv_trans(filename: str) -> list[dict]:
     """
     list_of_dicts = []
     with open(filename, encoding="utf-8") as file:
-        reader = csv.DictReader(file, delimiter=";" )
+        reader = csv.DictReader(file, delimiter=";")
         for row in reader:
-                list_of_dicts.append(row)
+            list_of_dicts.append(row)
     return list_of_dicts
