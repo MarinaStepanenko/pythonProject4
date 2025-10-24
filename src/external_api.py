@@ -12,7 +12,7 @@ def get_convertation(transaction: list[dict]) -> float | int:
     Принимает на вход транзакцию и возвращает сумму транзакции amount в рублях.
     Если транзакция в USD или EUR, обращается к API для получения текущего курса и конвертации в рубли.
     """
-    amount = 0
+    amount = 0.0
     for t in transaction:
         if t["operationAmount"]["currency"].get("code") == "RUB":
             amount += float(t["operationAmount"].get("amount"))
