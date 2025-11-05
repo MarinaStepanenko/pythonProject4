@@ -9,7 +9,7 @@ def filter_by_state(my_list_info: list[Dict], state: str = "EXECUTED") -> list[D
     """
     new_list = []
     for my_list in my_list_info:
-        if my_list["state"] == state:
+        if my_list.get("state") == state:
             new_list.append(my_list)
     return new_list
 
